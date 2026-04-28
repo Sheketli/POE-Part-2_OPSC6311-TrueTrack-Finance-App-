@@ -203,3 +203,15 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 - **Account lockout** after 3 failed login attempts, with a 60-second countdown timer
 
 ---
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes with descriptive messages
+4. Push and open a Pull Request to `develop`
+5. Ensure all CI checks pass before requesting a review
+
+---
