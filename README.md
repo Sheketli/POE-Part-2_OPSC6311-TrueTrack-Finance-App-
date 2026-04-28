@@ -215,3 +215,7 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 5. Ensure all CI checks pass before requesting a review
 
 ---
+## License
+
+This project is submitted as part of OPSC6311 (Open Source Coding) coursework.
+All rights reserved by the author unless otherwise stated.
