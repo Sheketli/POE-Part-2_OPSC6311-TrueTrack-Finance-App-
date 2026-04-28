@@ -190,3 +190,16 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 4. Runs instrumented tests on an Android API 34 emulator
 
 ---
+
+---
+
+## Security
+
+- **Passwords** are hashed with bcrypt (jBCrypt) before storage — plain-text passwords are never persisted
+- **Session tokens** are stored in AES-256 `EncryptedSharedPreferences`
+- **Database** is encrypted with SQLCipher using a device-bound key
+- **Receipt images** are stored in private internal storage — not accessible to other apps
+- **Biometric gate** activates after 60 seconds of app inactivity using AndroidX `BiometricPrompt`
+- **Account lockout** after 3 failed login attempts, with a 60-second countdown timer
+
+---
