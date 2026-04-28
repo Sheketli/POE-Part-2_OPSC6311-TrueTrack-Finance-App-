@@ -56,48 +56,143 @@ TrueTrackFinance/
 ├── app/
 │   ├── src/
 │   │   ├── main/
+│   │   │   ├── AndroidManifest.xml          # App configuration, permissions, activities
+│   │   │
 │   │   │   ├── java/com/example/truetrackfinance/
-│   │   │   │   ├── TrueTrackFinanceApp.kt        # Hilt Application class
-│   │   │   │   ├── data/
+│   │   │   │
+│   │   │   │   ├── TrueTrackFinanceApp.kt   # Application class (Hilt setup, global init)
+│   │   │   │
+│   │   │   │   ├── data/                    # Data layer (Room DB + repositories)
 │   │   │   │   │   ├── db/
-│   │   │   │   │   │   ├── entity/Entities.kt    # Room entities (User, Category, Expense, …)
-│   │   │   │   │   │   ├── dao/                  # UserDao, ExpenseDao, CategoryDao, …
-│   │   │   │   │   │   └── AppDatabase.kt        # Room database + SQLCipher factory
-│   │   │   │   │   ├── model/Models.kt           # Projection data classes
-│   │   │   │   │   └── repository/               # UserRepository, ExpenseRepository, …
-│   │   │   │   ├── di/AppModule.kt               # Hilt bindings
-│   │   │   │   ├── ui/
-│   │   │   │   │   ├── SplashActivity.kt
-│   │   │   │   │   ├── AuthActivity.kt / AuthPagerAdapter.kt
-│   │   │   │   │   ├── MainActivity.kt
-│   │   │   │   │   ├── auth/                     # LoginFragment, RegisterFragment
-│   │   │   │   │   ├── dashboard/                # DashboardFragment + adapters
-│   │   │   │   │   ├── expenses/                 # ExpensesFragment, AddExpenseFragment, adapters
-│   │   │   │   │   ├── reports/                  # ReportsFragment + adapters
-│   │   │   │   │   ├── savings/                  # SavingsFragment + adapters + bottom sheets
-│   │   │   │   │   ├── categories/               # CategoriesFragment + adapter + bottom sheet
-│   │   │   │   │   ├── achievements/             # AchievementsFragment + BadgesAdapter
-│   │   │   │   │   ├── profile/                  # ProfileFragment
-│   │   │   │   │   └── settings/                 # SettingsFragment
-│   │   │   │   ├── viewmodel/                    # AuthViewModel, DashboardViewModel, …
-│   │   │   │   ├── worker/                       # BudgetNotificationWorker, RecurringExpenseWorker, …
-│   │   │   │   └── util/                         # SessionManager, DateUtil, CurrencyUtil, …
-│   │   │   ├── res/
-│   │   │   │   ├── layout/                       # All XML layout files
-│   │   │   │   ├── drawable/                     # Vector icons, backgrounds
-│   │   │   │   ├── menu/bottom_nav_menu.xml
-│   │   │   │   ├── navigation/nav_graph.xml
-│   │   │   │   ├── raw/confetti.json             # Lottie animation (replace with real file)
-│   │   │   │   ├── values/colors.xml, strings.xml, themes.xml, dimens.xml
-│   │   │   │   └── xml/file_provider_paths.xml
-│   │   │   └── AndroidManifest.xml
-│   │   ├── test/                                 # JVM unit tests (MockK + coroutines-test)
-│   │   └── androidTest/                          # Espresso instrumented tests
-│   └── build.gradle.kts
-├── .github/workflows/build.yml                   # CI: build APK + run tests
-├── build.gradle.kts
-├── settings.gradle.kts
-└── README.md
+│   │   │   │   │   │   ├── dao/             # Data Access Objects (queries)
+│   │   │   │   │   │   │   ├── BadgeDao.kt
+│   │   │   │   │   │   │   ├── BudgetDao.kt
+│   │   │   │   │   │   │   ├── CategoryDao.kt
+│   │   │   │   │   │   │   ├── ExpenseDao.kt
+│   │   │   │   │   │   │   ├── SavingsGoalDao.kt
+│   │   │   │   │   │   │   └── UserDao.kt
+│   │   │   │   │   │
+│   │   │   │   │   │   ├── entity/
+│   │   │   │   │   │   │   └── Entities.kt  # All Room entities (tables)
+│   │   │   │   │   │
+│   │   │   │   │   │   └── AppDatabase.kt  # Room database instance
+│   │   │   │   │
+│   │   │   │   │   ├── model/
+│   │   │   │   │   │   └── Models.kt       # Data models / projections
+│   │   │   │   │
+│   │   │   │   │   └── repository/         # Business logic abstraction
+│   │   │   │   │       ├── BadgeRepository.kt
+│   │   │   │   │       ├── BudgetRepository.kt
+│   │   │   │   │       ├── CategoryRepository.kt
+│   │   │   │   │       ├── ExpenseRepository.kt
+│   │   │   │   │       ├── ReportsRepository.kt
+│   │   │   │   │       ├── SavingsRepository.kt
+│   │   │   │   │       └── UserRepository.kt
+│   │   │   │
+│   │   │   │   ├── di/
+│   │   │   │   │   └── AppModule.kt        # Dependency Injection (Hilt bindings)
+│   │   │   │
+│   │   │   │   ├── ui/                    # UI Layer (feature-based structure)
+│   │   │   │   │
+│   │   │   │   │   ├── achievements/
+│   │   │   │   │   │   ├── AchievementsFragment.kt  # Achievements screen
+│   │   │   │   │   │   └── BadgeAdapter.kt          # RecyclerView adapter
+│   │   │   │   │
+│   │   │   │   │   ├── auth/
+│   │   │   │   │   │   ├── LoginFragment.kt         # User login UI
+│   │   │   │   │   │   └── RegisterFragment.kt      # User registration UI
+│   │   │   │   │
+│   │   │   │   │   ├── categories/
+│   │   │   │   │   │   ├── CategoriesFragment.kt
+│   │   │   │   │   │   ├── CategoryAdapter.kt
+│   │   │   │   │   │   ├── AddCategoryBottomSheet.kt
+│   │   │   │   │   │   ├── AllocationAdapter.kt
+│   │   │   │   │   │   └── IncomeAllocationFragment.kt
+│   │   │   │   │
+│   │   │   │   │   ├── dashboard/
+│   │   │   │   │   │   ├── DashboardFragment.kt     # Main dashboard screen
+│   │   │   │   │   │   ├── CategoryProgressAdapter.kt
+│   │   │   │   │   │   ├── DashboardTopCategoriesAdapter.kt
+│   │   │   │   │   │   └── RecentExpensesAdapter.kt
+│   │   │   │   │
+│   │   │   │   │   ├── expenses/
+│   │   │   │   │   │   ├── ExpensesFragment.kt
+│   │   │   │   │   │   ├── AddExpenseFragment.kt
+│   │   │   │   │   │   ├── ExpenseFilterBottomSheet.kt
+│   │   │   │   │   │   ├── RecurringTransactionsFragment.kt
+│   │   │   │   │   │   ├── RecurringSeriesAdapter.kt
+│   │   │   │   │   │   └── ImageViewerFragment.kt
+│   │   │   │   │
+│   │   │   │   │   ├── profile/
+│   │   │   │   │   │   └── ProfileFragment.kt       # User profile screen
+│   │   │   │   │
+│   │   │   │   │   ├── reports/
+│   │   │   │   │   │   ├── ReportsFragment.kt
+│   │   │   │   │   │   └── VarianceAdapter.kt
+│   │   │   │   │
+│   │   │   │   │   ├── savings/
+│   │   │   │   │   │   ├── SavingsFragment.kt
+│   │   │   │   │   │   ├── SavingsGoalAdapter.kt
+│   │   │   │   │   │   ├── AnnualEnvelopeAdapter.kt
+│   │   │   │   │   │   ├── AddEnvelopeBottomSheet.kt
+│   │   │   │   │   │   ├── AddGoalBottomSheet.kt
+│   │   │   │   │   │   └── ContributionBottomSheet.kt
+│   │   │   │   │
+│   │   │   │   │   ├── settings/
+│   │   │   │   │   │   └── SettingsFragment.kt      # App settings
+│   │   │   │   │
+│   │   │   │   │   ├── AuthActivity.kt              # Handles login/register navigation
+│   │   │   │   │   ├── MainActivity.kt              # Main app container (bottom nav)
+│   │   │   │   │   └── SplashActivity.kt            # Splash screen
+│   │   │   │
+│   │   │   │   ├── viewmodel/                      # MVVM ViewModels
+│   │   │   │   │   ├── AuthViewModel.kt
+│   │   │   │   │   ├── BadgeViewModel.kt
+│   │   │   │   │   ├── CategoryViewModel.kt
+│   │   │   │   │   ├── DashboardViewModel.kt
+│   │   │   │   │   ├── ExpenseViewModel.kt
+│   │   │   │   │   ├── ProfileViewModel.kt
+│   │   │   │   │   ├── ReportsViewModel.kt
+│   │   │   │   │   └── SavingsViewModel.kt
+│   │   │   │
+│   │   │   │   ├── util/                           # Helper / utility classes
+│   │   │   │   │   ├── BadgeEngine.kt
+│   │   │   │   │   ├── BiometricHelper.kt
+│   │   │   │   │   ├── CsvExporter.kt
+│   │   │   │   │   ├── CurrencyUtil.kt
+│   │   │   │   │   ├── DateUtil.kt
+│   │   │   │   │   ├── ImageUtil.kt
+│   │   │   │   │   ├── NotificationHelper.kt
+│   │   │   │   │   └── SessionManager.kt
+│   │   │   │
+│   │   │   │   └── worker/                         # Background tasks (WorkManager)
+│   │   │   │       ├── BudgetNotificationWorker.kt
+│   │   │   │       ├── RecurringExpenseWorker.kt
+│   │   │   │       └── SavingsGoalNotificationWorker.kt
+│   │   │
+│   │   │   ├── res/                                # Resources (UI, assets)
+│   │   │   │   ├── layout/                         # XML UI layouts
+│   │   │   │   ├── drawable/                       # Icons, shapes, backgrounds
+│   │   │   │   ├── mipmap/                         # App launcher icons
+│   │   │   │   ├── menu/                           # Menu XMLs
+│   │   │   │   ├── navigation/                     # Navigation graph
+│   │   │   │   ├── raw/                            # Raw files (animations, JSON)
+│   │   │   │   ├── values/                         # Colors, strings, themes
+│   │   │   │   ├── values-night/                   # Dark mode resources
+│   │   │   │   ├── values-sw600dp/                 # Tablet layouts
+│   │   │   │   └── xml/                            # Config XMLs (file provider, backup)
+│   │   │
+│   │   ├── test/                                  # Unit tests (JVM)
+│   │   └── androidTest/                           # Instrumented tests (device/emulator)
+│   │
+│   ├── build.gradle.kts                           # Module build config
+│   └── proguard-rules.pro                         # Code shrinking rules
+│
+├── build.gradle.kts                               # Project build config
+├── settings.gradle.kts                            # Project settings
+├── gradle.properties                             # Gradle configs
+├── gradle-wrapper.properties                     # Gradle wrapper
+└── libs.versions.toml                            # Dependency versions
 ```
 
 ---
