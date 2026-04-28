@@ -143,3 +143,24 @@ TrueTrackFinance/
    Sign it with your keystore before distributing.
 
 ---
+
+---
+
+## Running Tests
+
+```bash
+# JVM unit tests
+./gradlew test
+
+# Instrumented tests (requires connected device or emulator)
+./gradlew connectedAndroidTest
+
+# Both
+./gradlew test connectedAndroidTest
+```
+
+Test reports are generated at:
+- `app/build/reports/tests/` (unit tests)
+- `app/build/reports/androidTests/` (instrumented tests)
+
+---
