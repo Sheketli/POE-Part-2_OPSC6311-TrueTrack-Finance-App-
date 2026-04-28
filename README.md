@@ -177,3 +177,16 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 4. Runs instrumented tests on an Android API 34 emulator
 
 ---
+
+---
+
+## CI/CD
+
+Every push and pull request to `main` or `develop` triggers the GitHub Actions workflow (`.github/workflows/build.yml`) which:
+
+1. Runs all JVM unit tests
+2. Builds the debug APK
+3. Uploads the APK as a downloadable artifact (retained for 14 days)
+4. Runs instrumented tests on an Android API 34 emulator
+
+---
