@@ -99,3 +99,47 @@ TrueTrackFinance/
 ├── settings.gradle.kts
 └── README.md
 ```
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- Android Studio Hedgehog (2023.1.1) or later
+- JDK 17
+- Android SDK with API 25–36 installed
+- A physical Android device or emulator running API 25+
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/TrueTrackFinance.git
+   cd TrueTrackFinance
+   ```
+
+2. **Open in Android Studio**
+   - File > Open > select the `TrueTrackFinance/` folder
+   - Wait for Gradle sync to finish (it will download all dependencies automatically)
+
+3. **Replace the Lottie animation**
+   - Download a free confetti animation from [LottieFiles](https://lottiefiles.com)
+   - Replace `app/src/main/res/raw/confetti.json` with the downloaded file
+
+4. **Add the TrueTrack Finance logo**
+   - Place your `ic_launcher.png` / `ic_launcher_round.png` files in the appropriate `mipmap-*` folders
+   - Or use Android Studio's Image Asset tool (File > New > Image Asset) and import the TF icon
+
+5. **Run on a device or emulator**
+   - Select your device in the toolbar
+   - Click Run (Shift+F10) or use `./gradlew installDebug`
+
+6. **Build release APK**
+   ```bash
+   ./gradlew assembleRelease
+   ```
+   The APK will be at `app/build/outputs/apk/release/app-release-unsigned.apk`.
+   Sign it with your keystore before distributing.
+
+---
