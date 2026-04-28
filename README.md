@@ -26,3 +26,25 @@ TrueTrackFinance is a fully offline, privacy-first personal budget tracker for A
 
 ---
 
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Kotlin |
+| Architecture | MVVM + Repository |
+| DI | Hilt |
+| Database | Room 2.8 + SQLCipher (encrypted) |
+| Async | Kotlin Coroutines + StateFlow / LiveData |
+| Charts | MPAndroidChart |
+| Camera | CameraX |
+| Animations | Lottie |
+| Security | EncryptedSharedPreferences (AES-256), bcrypt (jBCrypt), BiometricPrompt |
+| Background | WorkManager |
+| Navigation | Jetpack Navigation Component |
+| UI | Material Design 3 (Material3 theme) |
+| Tests | JUnit 4, MockK, Kotlin Coroutines Test, Espresso |
+| CI | GitHub Actions |
+| Min SDK | Android 7.0 (API 25) |
+| Target SDK | Android 16 (API 36) |
+
+---
