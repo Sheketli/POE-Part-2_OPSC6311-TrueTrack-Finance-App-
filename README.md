@@ -48,3 +48,54 @@ TrueTrackFinance is a fully offline, privacy-first personal budget tracker for A
 | Target SDK | Android 16 (API 36) |
 
 ---
+
+## Project Structure
+
+```
+TrueTrackFinance/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/example/truetrackfinance/
+│   │   │   │   ├── TrueTrackFinanceApp.kt        # Hilt Application class
+│   │   │   │   ├── data/
+│   │   │   │   │   ├── db/
+│   │   │   │   │   │   ├── entity/Entities.kt    # Room entities (User, Category, Expense, …)
+│   │   │   │   │   │   ├── dao/                  # UserDao, ExpenseDao, CategoryDao, …
+│   │   │   │   │   │   └── AppDatabase.kt        # Room database + SQLCipher factory
+│   │   │   │   │   ├── model/Models.kt           # Projection data classes
+│   │   │   │   │   └── repository/               # UserRepository, ExpenseRepository, …
+│   │   │   │   ├── di/AppModule.kt               # Hilt bindings
+│   │   │   │   ├── ui/
+│   │   │   │   │   ├── SplashActivity.kt
+│   │   │   │   │   ├── AuthActivity.kt / AuthPagerAdapter.kt
+│   │   │   │   │   ├── MainActivity.kt
+│   │   │   │   │   ├── auth/                     # LoginFragment, RegisterFragment
+│   │   │   │   │   ├── dashboard/                # DashboardFragment + adapters
+│   │   │   │   │   ├── expenses/                 # ExpensesFragment, AddExpenseFragment, adapters
+│   │   │   │   │   ├── reports/                  # ReportsFragment + adapters
+│   │   │   │   │   ├── savings/                  # SavingsFragment + adapters + bottom sheets
+│   │   │   │   │   ├── categories/               # CategoriesFragment + adapter + bottom sheet
+│   │   │   │   │   ├── achievements/             # AchievementsFragment + BadgesAdapter
+│   │   │   │   │   ├── profile/                  # ProfileFragment
+│   │   │   │   │   └── settings/                 # SettingsFragment
+│   │   │   │   ├── viewmodel/                    # AuthViewModel, DashboardViewModel, …
+│   │   │   │   ├── worker/                       # BudgetNotificationWorker, RecurringExpenseWorker, …
+│   │   │   │   └── util/                         # SessionManager, DateUtil, CurrencyUtil, …
+│   │   │   ├── res/
+│   │   │   │   ├── layout/                       # All XML layout files
+│   │   │   │   ├── drawable/                     # Vector icons, backgrounds
+│   │   │   │   ├── menu/bottom_nav_menu.xml
+│   │   │   │   ├── navigation/nav_graph.xml
+│   │   │   │   ├── raw/confetti.json             # Lottie animation (replace with real file)
+│   │   │   │   ├── values/colors.xml, strings.xml, themes.xml, dimens.xml
+│   │   │   │   └── xml/file_provider_paths.xml
+│   │   │   └── AndroidManifest.xml
+│   │   ├── test/                                 # JVM unit tests (MockK + coroutines-test)
+│   │   └── androidTest/                          # Espresso instrumented tests
+│   └── build.gradle.kts
+├── .github/workflows/build.yml                   # CI: build APK + run tests
+├── build.gradle.kts
+├── settings.gradle.kts
+└── README.md
+```
