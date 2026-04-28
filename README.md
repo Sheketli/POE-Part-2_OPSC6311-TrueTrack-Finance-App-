@@ -144,8 +144,6 @@ TrueTrackFinance/
 
 ---
 
----
-
 ## Running Tests
 
 ```bash
@@ -165,8 +163,6 @@ Test reports are generated at:
 
 ---
 
----
-
 ## CI/CD
 
 Every push and pull request to `main` or `develop` triggers the GitHub Actions workflow (`.github/workflows/build.yml`) which:
@@ -178,8 +174,6 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 
 ---
 
----
-
 ## CI/CD
 
 Every push and pull request to `main` or `develop` triggers the GitHub Actions workflow (`.github/workflows/build.yml`) which:
@@ -188,8 +182,6 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 2. Builds the debug APK
 3. Uploads the APK as a downloadable artifact (retained for 14 days)
 4. Runs instrumented tests on an Android API 34 emulator
-
----
 
 ---
 
@@ -201,8 +193,6 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 - **Receipt images** are stored in private internal storage — not accessible to other apps
 - **Biometric gate** activates after 60 seconds of app inactivity using AndroidX `BiometricPrompt`
 - **Account lockout** after 3 failed login attempts, with a 60-second countdown timer
-
----
 
 ---
 
