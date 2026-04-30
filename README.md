@@ -300,6 +300,13 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 5. Ensure all CI checks pass before requesting a review
 
 ---
+
+## A YouTube video presentation showcasing all the app's features of TrueTrack Finance App
+
+https://youtu.be/kpSaXKxypWA
+
+---
+
 ## License
 
 This project is submitted as part of OPSC6311 (Open Source Coding) coursework.
