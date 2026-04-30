@@ -269,17 +269,6 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 
 ---
 
-## CI/CD
-
-Every push and pull request to `main` or `develop` triggers the GitHub Actions workflow (`.github/workflows/build.yml`) which:
-
-1. Runs all JVM unit tests
-2. Builds the debug APK
-3. Uploads the APK as a downloadable artifact (retained for 14 days)
-4. Runs instrumented tests on an Android API 34 emulator
-
----
-
 ## Security
 
 - **Passwords** are hashed with bcrypt (jBCrypt) before storage — plain-text passwords are never persisted
