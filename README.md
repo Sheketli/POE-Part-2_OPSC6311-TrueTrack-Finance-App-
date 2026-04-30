@@ -269,6 +269,22 @@ Every push and pull request to `main` or `develop` triggers the GitHub Actions w
 
 ---
 
+## Database Schema
+
+| Table | Key Columns |
+|---|---|
+| `users` | id, username, email, password_hash, is_locked, failed_attempts, lock_until |
+| `categories` | id, user_id, name, color, emoji, budget, sort_order |
+| `expenses` | id, user_id, category_id, amount, description, date, receipt_path, is_recurring, frequency |
+| `budgets` | id, user_id, total_monthly_budget, income, month, year |
+| `savings_goals` | id, user_id, name, target_amount, current_amount, deadline, monthly_required |
+| `annual_envelopes` | id, user_id, name, annual_amount, due_month, monthly_save |
+| `badges` | id, user_id, badge_type, earned_date, is_earned |
+
+Room Migration API handles schema upgrades across app versions.
+
+---
+
 ## Security
 
 - **Passwords** are hashed with bcrypt (jBCrypt) before storage — plain-text passwords are never persisted
