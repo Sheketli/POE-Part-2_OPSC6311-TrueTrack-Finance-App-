@@ -3,7 +3,7 @@ TrueTrack Finance App.
 
 **Smart budgeting. Real results.**
 
-TrueTrackFinance is a fully offline, privacy-first personal budget tracker for Android, built in Kotlin with Material Design 3. All data is stored exclusively on-device in an encrypted Room (SQLite) database — nothing is ever sent to a server.
+TrueTrack Finance is a fully offline, privacy-first personal budget tracker for Android, built in Kotlin with Material Design 3. All data is stored exclusively on-device in an encrypted Room (SQLite) database — nothing is ever sent to a server.
 
 ---
 
